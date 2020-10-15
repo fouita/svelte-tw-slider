@@ -1,6 +1,7 @@
 <script>
   import Tooltip from "@fouita/tooltip";
   import { onMount } from "svelte/internal";
+  import { createEventDispatcher } from "svelte";
   let klass = "";
   export { klass as class };
   export let min = 0;
@@ -24,6 +25,7 @@
     } else {
       value = val;
     }
+   dispatch('change', value)
   }
 
   function movePointer(e) {
