@@ -3,6 +3,8 @@
   import { onMount } from "svelte/internal";
   import { createEventDispatcher } from "svelte";
   let klass = "";
+  
+  const dispatch = createEventDispatcher();
   export { klass as class };
   export let min = 0;
   export let max = 100;
