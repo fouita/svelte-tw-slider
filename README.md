@@ -70,7 +70,7 @@ We can change the color by adding `color` prop
 ![slider fouita](https://cdn.fouita.com/assets/pics/template/slider/slider-pink.jpg)
 
 ```html
-<Slider tooltip=hover color=pink min={0} max={30} bind:value />
+<Slider tooltip=hover color=pink-600 min={0} max={30} bind:value />
 ```
 
 ## Custom labels

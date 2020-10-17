@@ -14,7 +14,7 @@
   export let maxLabel = String(max);
   export let valueLabel = null;
 
-  export let color = "indigo";
+  export let color = "indigo-600";
   export let tooltip = false;
 
   let indLabel = valueLabel;
