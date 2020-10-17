@@ -1,7 +1,10 @@
 <script>
   import Tooltip from "@fouita/tooltip";
   import { onMount } from "svelte/internal";
+  import { createEventDispatcher } from "svelte";
   let klass = "";
+  
+  const dispatch = createEventDispatcher();
   export { klass as class };
   export let min = 0;
   export let max = 100;
@@ -24,6 +27,7 @@
     } else {
       value = val;
     }
+   dispatch('change', value)
   }
 
   function movePointer(e) {
@@ -140,7 +144,7 @@
     <div key="k3" class="h-1 -mt-px bg-gray-300 rounded-full" use:setContainer>
       <div
         key="k4"
-        class="absolute h-1 rounded-full bg-{color}-600 w-0"
+        class="absolute h-1 rounded-full bg-{color} w-0"
         use:progressBar />
       <div
         key="k5"
