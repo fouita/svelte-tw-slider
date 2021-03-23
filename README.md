@@ -37,7 +37,7 @@ Multi values works with array of two values, like the following
 ```html
 <script>
 	import Slider from '@fouita/slider'					
-	let value = 21
+	let value = [10,21]
 </script>
 
 <div class="p-6 text-3xl text-center">
