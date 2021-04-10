@@ -32,7 +32,8 @@
 
   function movePointer(e) {
     if (!current_pointer) return false;
-    let diff = e.clientX - elm_x; // calculate percentage
+    let cx = e.clientX || e.touches[0].clientX;
+    let diff = cx - elm_x; // calculate percentage
     let per = (diff * 100) / cont_width;
     per = per < 0 ? 0 : per > 100 ? 100 : per;
     setValue(parseInt((per * (max - min)) / 100) + min);
@@ -137,7 +138,9 @@
 
 <svelte:window
   on:mousemove={movePointer}
+  on:touchmove={movePointer}
   on:mouseup={mouseUp}
+  on:touchend={mouseUp}
   on:resize={resizeWindow} />
 <div key="k1" class={klass}>
   <div key="k2" class="py-1 relative min-w-full" use:elmPosition>
@@ -154,6 +157,7 @@
         unselectable="on"
         onselectstart="return false;"
         use:setPointer
+        on:touchstart={() => (current_pointer = pointer)}
         on:mousedown={() => (current_pointer = pointer)}
         on:mouseenter={() => (display_tooltip1 = tooltip || tooltip == 'hover')}
         on:mouseleave={() => (display_tooltip1 = (!!tooltip && !!current_pointer) || (tooltip == 'hover' ? false : tooltip))}>
@@ -172,6 +176,7 @@
           unselectable="on"
           onselectstart="return false;"
           use:setPointer2
+          on:touchstart={() => (current_pointer = pointer2)}
           on:mousedown={() => (current_pointer = pointer2)}
           on:mouseenter={() => (display_tooltip2 = tooltip || tooltip == 'hover')}
           on:mouseleave={() => (display_tooltip2 = (!!tooltip && !!current_pointer) || (tooltip == 'hover' ? false : tooltip))}>
